@@ -1,6 +1,7 @@
 (ns clocks.main)
 
 (declare init)
+(declare setup)
 
 (defn ^:dev/before-load stop
   [])
@@ -10,5 +11,16 @@
   (init))
 
 (defn init []
-  (let [main (.getElementById js/document "main")]
-    (aset main "innerHTML" "<h1 style=\"color: DarkOrchid;\">WELCOME TO CLOJURE!!</h1>")))
+  (setup))
+
+(defn handle-click
+  [event]
+  ;; Get text node
+  ;; Change text content
+  )
+
+(defn setup
+  []
+  ;; Get button node #click-btn
+  ;; Add "click" event listener
+  )

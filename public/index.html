@@ -10,7 +10,27 @@
   </head>
 
   <body>
-    <div id="main"></div>
+    <div class="main">
+      <div id="text"></div>
+      
+      <div class="actions">
+        <button id="click-btn" class="btn primary">Click me!</button>
+      </div>
+
+      <script>
+       function handleClick(event) {
+         const node = document.getElementById("text");
+         node.textContent = "Something nice!";
+       }
+
+       function setup() {
+         const btn = document.getElementById("click-btn");
+         btn.addEventListener("click", handleClick);
+       }
+
+       setup();
+      </script>
+    </div>
   </body>
   <script src="js/main.js"></script>
 </html>
