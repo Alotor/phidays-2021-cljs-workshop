@@ -1,6 +1,7 @@
 (ns clocks.main)
 
 (declare init)
+(declare setup)
 
 (defn ^:dev/before-load stop
   [])
@@ -10,5 +11,30 @@
   (init))
 
 (defn init []
-  (let [main (.getElementById js/document "main")]
-    (aset main "innerHTML" "<h1 style=\"color: DarkOrchid;\">WELCOME TO CLOJURE!!</h1>")))
+  (setup))
+
+
+(def counter (atom 0))
+
+(defn refresh-text
+  []
+  ;; Get the #counter node
+  ;; Change textContent to reflect the current counter value
+  )
+
+(defn add-counter
+  [event]
+  ;; Add to counter
+  ;; Refresh text
+  )
+
+(defn sub-counter
+  [event]
+  ;; Substract from counter
+  ;; Refresh text
+  )
+
+(defn setup []
+  ;; Get button nodes #add-btn #sub-btn
+  ;; Add event listeners
+  )

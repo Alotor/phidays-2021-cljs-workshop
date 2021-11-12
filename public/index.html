@@ -10,7 +10,47 @@
   </head>
 
   <body>
-    <div id="main"></div>
+    <!-- Exercise 2: COUNTERS -->
+    <div class="main">
+      <div>Counter: <span id="counter">0</span></div>
+      
+      <div class="actions">
+        <button id="add-btn" class="btn primary">+</button>
+        <button id="sub-btn" class="btn primary">-</button>
+      </div>
+
+      <script>
+
+       let counter;
+
+       function refreshText() {
+         const node = document.getElementById("counter");
+         node.textContent = counter;
+       }
+       
+       function addCounter(event) {
+         counter++;
+         refreshText();
+       }
+
+       function subCounter(event) {
+         counter--;
+         refreshText();
+       }
+
+       function setup() {
+         counter = 0;
+         const addBtn = document.getElementById("add-btn");
+         addBtn.addEventListener("click", addCounter);
+
+         const subBtn = document.getElementById("sub-btn");
+         subBtn.addEventListener("click", subCounter);
+       }
+
+       setup();
+       
+      </script>
+    </div>
   </body>
   <script src="js/main.js"></script>
 </html>
