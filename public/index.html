@@ -10,7 +10,21 @@
   </head>
 
   <body>
-    <div id="main"></div>
+    <div class="main">
+      <canvas id="clock"></canvas>
+
+      <div class="actions">
+        <button id="start-btn"
+                class="btn primary"
+                onClick="clocks.main.handle_start(event)">Start</button>
+
+        <button id="stop-btn"
+                class="btn secondary"
+                onClick="clocks.main.handle_stop(event)"
+                disabled>Stop</button>
+
+        <span id="time-left" class="info"></span>
+      </div>
   </body>
   <script src="js/main.js"></script>
 </html>
