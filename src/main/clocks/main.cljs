@@ -9,6 +9,26 @@
   []
   (init))
 
+(def state (atom {:context nil
+                  :width nil
+                  :height nil}))
+
+(defn setup
+  [])
+
+(defn random-color
+  [])
+
+(defn draw
+  [])
+
+(defn start-loop
+  []
+  (let [loop (fn loop []
+               (draw)
+               (js/setTimeout loop 1000))]
+    (loop)))
+
 (defn init []
-  (let [main (.getElementById js/document "main")]
-    (aset main "innerHTML" "<h1 style=\"color: DarkOrchid;\">WELCOME TO CLOJURE!!</h1>")))
+  (setup)
+  (start-loop))

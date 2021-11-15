@@ -10,7 +10,67 @@
   </head>
 
   <body>
-    <div id="main"></div>
+    <div class="main">
+      <canvas id="canvas"></canvas>
+
+      <script>
+       const state = {
+         context: null,
+         width: null,
+         height: null
+       };
+
+       function setup() {
+         const canvas = document.getElementById("canvas");
+         const rect = canvas.getBoundingClientRect();
+
+         state.width = rect.width;
+         state.height = rect.height;
+         state.context = canvas.getContext("2d");
+
+         canvas.width = state.width;
+         canvas.height = state.height;
+       }
+
+       function randomColor() {
+         const r = Math.random() * 255;
+         const g = Math.random() * 255;
+         const b = Math.random() * 255;
+         return { r, g, b };
+       }
+
+       function draw() {
+         const context = state.context,
+               width   = state.width,
+               height  = state.height;
+
+         context.clearRect(0, 0, state.width, state.height);
+
+         context.beginPath();
+         context.lineWidth = 5;
+         context.rect(10, 10, state.width - 20, state.height - 20);
+         context.stroke();
+
+         context.beginPath();
+         const color = randomColor();
+         context.fillStyle = `rgb(${color.r}, ${color.g}, ${color.b})`;
+         context.rect(10, 10, state.width - 20, state.height - 20);
+         context.fill();
+       }
+
+       function startLoop() {
+         const loop = () => {
+           draw();
+           setTimeout(loop, 1000);
+         }
+
+         loop();
+       }
+
+       setup();
+       startLoop();
+
+      </script>
   </body>
   <script src="js/main.js"></script>
 </html>

@@ -20,7 +20,7 @@ body {
   width: 600px;
 }
 
-#clock {
+#canvas {
   flex-grow: 1;
   height: 100%;
 }
