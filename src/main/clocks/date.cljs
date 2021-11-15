@@ -3,18 +3,14 @@
 (defn parse-date [date]
   {:hour   (.getHours date)
    :minute (.getMinutes date)
-   :second (.getSeconds date)})
+   :second (.getSeconds date)
+   :time   (.getTime date)})
 
 (defn now
   []
   (parse-date (js/Date.)))
 
-(defn seconds-left [start-time]
-  (let [current-time (now)]
-    (+ (* 60 (- (+ 25 (:minute start-time))
-                (:minute current-time)))
-       (- (:second start-time)
-          (:second current-time)))))
+(defn diff-seconds [{from-time :time} {to-time :time}]
+  (/ (- to-time from-time) 1000))
 
-(defn time-over? [start-time]
-  (<= (seconds-left start-time) 0))
+
