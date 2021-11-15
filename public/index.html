@@ -10,7 +10,54 @@
   </head>
 
   <body>
-    <div id="main"></div>
+    <!-- Exercise 3: LINES -->
+    <div class="main">
+      <canvas id="canvas"></canvas>
+
+      <script>
+       let context;
+       let width;
+       let height;
+
+       const hlines = [ 0, 0.25, 0.5, 0.75, 1.0 ];
+       const vlines = [ 0, 0.25, 0.5, 0.75, 1.0 ];
+
+
+       function setup() {
+         const canvas = document.getElementById("canvas");
+         context = canvas.getContext("2d");
+
+         const rect = canvas.getBoundingClientRect();
+         width = rect.width;
+         height = rect.height;
+
+         canvas.width = width;
+         canvas.height = height;  
+       }
+
+       function draw() {
+         context.clearRect(0, 0, width, height);
+
+         context.beginPath();
+         context.lineWidth = 5;
+
+         for (let l of hlines) {
+           context.moveTo(0, height * l);
+           context.lineTo(width, height * l);
+         }
+         
+         for (let l of vlines) {
+           context.moveTo(width * l, 0);
+           context.lineTo(width * l, height);
+         }
+         
+         context.stroke();
+       }
+
+       setup();
+       draw();
+       
+      </script></div>
   </body>
   <script src="js/main.js"></script>
 </html>
