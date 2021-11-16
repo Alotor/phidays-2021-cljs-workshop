@@ -24,7 +24,10 @@
         seconds (mth/floor (mod seconds-left 60))
 
         ;; TODO: Calculate the text to put on the bottom
-        text ""
+        text
+        (if (<= seconds-left 0)
+          (str "Time's over")
+          (str "Time left: " minutes " minutes, " seconds " seconds."))
 
         node (.getElementById js/document "time-left")]
 
@@ -42,7 +45,11 @@
     (d/draw-hands context cx cy radius current-time)
 
     ;; TODO: Draw a time slice when there is a value in @start-time
-    ))
+    (when @start-time
+      (let [minute (:minute @start-time)
+            second (:second @start-time)
+            angle (* minute (/ 360 60))]
+        (d/time-slice context cx cy radius angle (* pomodoro-time (/ 360 60)))))))
 
 (defn setup []
   (let [node    (.getElementById js/document "clock")
